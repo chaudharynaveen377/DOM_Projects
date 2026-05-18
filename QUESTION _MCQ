@@ -1,1 +1,60 @@
-implement MCQ choices using DOM
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Question and answer Generator</h1>
+        
+    </div>
+    <script>
+        let arr=[{
+            question:"What is the capital of France?",
+            options:["Paris","London","Berlin","Madrid"],
+            answer:"Paris"},{
+            question:"What is the capital of France?",
+            options:["Paris","London","Berlin","Madrid"],
+            answer:"Paris"}];
+
+        function displayQA(){
+            const container=document.getElementById('container');
+            arr.forEach(item=>{
+                const question=document.createElement('h2');
+                question.textContent=item.question;
+                container.appendChild(question);
+      
+                  const heading=document.createElement('ul');
+                    heading.textContent="choose one of them : ";
+                item.options.forEach(option=>{
+              
+                      const optionElement=document.createElement('li');
+                    optionElement.textContent=option;
+                    optionElement.addEventListener('click',()=>{
+                      if(option===item.answer){
+                        alert("Correct answer!");
+                        }else{
+                        alert("Wrong answer. Try again!");
+                        }
+                    });
+                    heading.appendChild(optionElement);
+                    container.appendChild(heading);
+                });
+
+                const answer=document.createElement('p');
+                answer.textContent="Answer: "+item.answer;
+                container.appendChild(answer);
+            });
+          //  <!-- document.body.appendChild(container); -->
+        }
+
+        
+        displayQA();
+
+
+    </script>
+</body>
+</html>
